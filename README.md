@@ -17,6 +17,7 @@ For using this library these libraries are needed to included:
 For that run: 
 
 source("https://bioconductor.org/biocLite.R")
+
 biocLite("RBGL")
 
 ## igraph0 
@@ -28,6 +29,7 @@ download and manually install the last version from here https://cran.r-project.
 For that run: 
 
 source("https://bioconductor.org/biocLite.R")
+
 biocLite("limma")
 
 
