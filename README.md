@@ -1,6 +1,12 @@
-# SteinerNet 
+# SteinerNet v2
 Steiner Tree Approach for Graph Analysis
-This version of SteirNet (v1.3) works with igraph0.
+
+This library is made in R programming language. 
+
+This version of SteirNet (v2) works with igraph.
+
+## older versions
+older versions of SteirNet upto (v1.3) works with igraph0.
 
 To use this code in your research please cite this the article related to this package:
 
@@ -20,7 +26,11 @@ source("https://bioconductor.org/biocLite.R")
 
 biocLite("RBGL")
 
-## igraph0 
+## igraph  https://cran.r-project.org/web/packages/igraph/index.html
+
+install.packages("igraph")
+
+### igraph0 for versions upto 1.7 
 
 download and manually install the last version from here https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_0.5.7.tar.gz
 
@@ -36,6 +46,6 @@ biocLite("limma")
 https://cran.r-project.org/src/contrib/Archive/SteinerNet/
 
 # News
-## 2017
+## 2017 Nov 
 Due to number of requests to work with newer version of R which are based on igraph instead of igraph0
-An update is in progress.
+I update the code of SteinerNet 
