@@ -2,7 +2,7 @@
 Steiner Tree Approach for Graph Analysis
 This version of SteirNet (v1.3) works with igraph0.
 
-To use this code in your research please cite :
+To use this code in your research please cite this the article related to this package:
 
 Steiner tree methods for optimal sub-network identification: an empirical study
 
@@ -32,6 +32,8 @@ source("https://bioconductor.org/biocLite.R")
 
 biocLite("limma")
 
+# Version History on Cran
+https://cran.r-project.org/src/contrib/Archive/SteinerNet/
 
 # News
 ## 2017
