@@ -5,12 +5,12 @@ This library is made in R programming language.
 
 This version of SteirNet (v2) works with igraph.
 
-## older versions
+### Older versions
 older versions of SteirNet upto (v1.3) works with igraph0.
 
-# Installation
+## Installation
 For using this library these libraries are needed to included:
-## RBGL http://www.bioconductor.org/packages/release/bioc/html/RBGL.html
+### RBGL http://www.bioconductor.org/packages/release/bioc/html/RBGL.html
 
 For that run: 
 
@@ -18,15 +18,15 @@ source("https://bioconductor.org/biocLite.R")
 
 biocLite("RBGL")
 
-## igraph  https://cran.r-project.org/web/packages/igraph/index.html
+### igraph  https://cran.r-project.org/web/packages/igraph/index.html
 
 install.packages("igraph")
 
-### igraph0 for versions upto 1.7 
+##### igraph0 for versions upto 1.7 
 
 download and manually install the last version from here https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_0.5.7.tar.gz
 
-## limma http://bioconductor.org/packages/release/bioc/html/limma.html
+### limma http://bioconductor.org/packages/release/bioc/html/limma.html
 
 For that run: 
 
@@ -34,7 +34,7 @@ source("https://bioconductor.org/biocLite.R")
 
 biocLite("limma")
 
-# Version History on Cran
+## Version History on Cran
 https://cran.r-project.org/src/contrib/Archive/SteinerNet/
 
 # News
@@ -43,7 +43,7 @@ Due to number of requests to work with newer version of R which are based on igr
 I update the code of SteinerNet 
 
 
-# citation
+# Citation
 To use this code in your research please cite this the article related to this package:
 
 Steiner tree methods for optimal sub-network identification: an empirical study
