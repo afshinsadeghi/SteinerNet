@@ -43,7 +43,7 @@ When \code{test} is appr the function returns random sets of terminals.
 
 
 \references{
-	1. Please refer to the paper that is published with this package. 
+	1. Afshin Sadeghi and Holger Froehlich, "Steiner tree methods for optimal sub-network identification: an empirical study", BMC Bioinformatics 2013 14:144  
 }
 
 \author{Afshin Sadeghi}

@@ -5,8 +5,8 @@ Title: Steiner Tree Approach for Graph Analysis
 License: GPL-3
 Author: Afshin Sadeghi
 Maintainer: Afshin Sadeghi <sadeghi.afshin@gmail.com>
-Depends: R (>= 3.1), igraph, limma, RBGL
-Imports: igraph, limma, RBGL, graph
+Depends: R (>= 3.1)
+Imports: igraph, limma, RBGL, graph, grDevices, stats, utils, graphics
 Description: A set of graph functions written in R to find Steiner
         trees on graphs. It provides tools for analysing Steiner tree
         application on networks. It has applications in biological

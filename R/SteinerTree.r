@@ -25,36 +25,36 @@ appr_steiner = function(runtime=5, labelcheck=TRUE, coloring= TRUE,  ter_list=NU
 	 #-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	 if(!is.null(ter_list)) 
 	  {
-		 V(g)$color="yellow"
+		 igraph::V(g)$color="yellow"
 		 V(g)[ter_list]$color="red"
 	  }
 	#-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	if(labelcheck){
-	  labels=c(V(g)$label) #list of vertices
-	  names= c(V(g)$name)
+	  labels=c(igraph::V(g)$label) #list of vertices
+	  names= c(igraph::V(g)$name)
 	  
 	  if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
 	    r0 =1:(length(V(g)))
-	    V(g)$label=sapply (r0 ,function(r0) toString(r0) )
-	    labels=  V(g)$label
+	    igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+	    labels=  igraph::V(g)$label
 	  }
 	  
 	  if(is.null(labels) && !is.null(names)){
-	    V(g)$label = V(g)$name
+	    igraph::V(g)$label = igraph::V(g)$name
 	    labels=names
 	  }
 	  
 	  if(!is.null(labels) && is.null(names)){
-	    V(g)$name =  V(g)$label
+	    igraph::V(g)$name =  igraph::V(g)$label
 	    names=labels
 	  }
 	  
 	  len=length(labels)
 	  r0 =1:(len)
 	  t =sapply (r0 ,function(r0) toString(labels[r0]) )
-	  temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
-	  V(g)$label=r0
-	  V(g)$name=r0
+	  temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+	  igraph::V(g)$label=r0
+	  igraph::V(g)$name=r0
 	}
 	#--------------------------------
  	 terminals = V(g)[color=="red"]
@@ -125,8 +125,8 @@ appr_steiner = function(runtime=5, labelcheck=TRUE, coloring= TRUE,  ter_list=NU
 	 #one of R problems is that if you sent a graph as output of a function it would miss
 	 #meta infomration about labels so I put it inside a list and return the list instead
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		r0 =1:(length(V(steinert)))
 		labellist =sapply (r0 ,function(r0) temp[ as.integer(V(steinert)$label[r0])] )
@@ -220,36 +220,36 @@ steinertree1 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,glist)
 	 }
 	 if(!is.null(ter_list)) 
 	  {
-		 V(g)$color="yellow"
+		 igraph::V(g)$color="yellow"
 		 V(g)[ter_list]$color="red"
 	  }
  #-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	 if(labelcheck){
-		labels=c(V(g)$label) #list of vertices
-		names= c(V(g)$name)
+		labels=c(igraph::V(g)$label) #list of vertices
+		names= c(igraph::V(g)$name)
 
 		if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
 		  	r0 =1:(length(V(g)))
-		 	 V(g)$label=sapply (r0 ,function(r0) toString(r0) )
-		 	 labels=  V(g)$label
+		 	 igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+		 	 labels=  igraph::V(g)$label
 		}
 
 		if(is.null(labels) && !is.null(names)){
-		  V(g)$label = V(g)$name
+		  igraph::V(g)$label = igraph::V(g)$name
 			labels=names
 		}
 
 		if(!is.null(labels) && is.null(names)){
-		  V(g)$name =  V(g)$label
+		  igraph::V(g)$name =  igraph::V(g)$label
 			names=labels
 		}
 
 		len=length(labels)
 		r0 =1:(len)
 		t =sapply (r0 ,function(r0) toString(labels[r0]) )
-		temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
-		V(g)$label=r0
-		V(g)$name=r0
+		temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+		igraph::V(g)$label=r0
+		igraph::V(g)$name=r0
 	 }
  #--------------------------------
  	 terminals = V(g)[color=="red"]
@@ -305,16 +305,16 @@ steinertree1 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,glist)
 	 if(coloring)
 	 {
 		 #this line on real test code should not be included or changed because the graph labels also will not be like here and should be corrected like the pattern in steiner 6  (also the graph will not be needed to treturned and the steiner is enough)
-		 V(g)$color="yellow"
-		 V(g)$color[subtree] ="green"
-		 V(g)$color[terminals]="red"
+		 igraph::V(g)$color="yellow"
+		 igraph::V(g)$color[subtree] ="green"
+		 igraph::V(g)$color[terminals]="red"
 	 }
 	 #---------------------
 	 #-----------------
 	 #to recover the real label:
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		r0 =1:(length(V(steinert)))
 		labellist =sapply (r0 ,function(r0) temp[ as.integer(V(steinert)$label[r0])] )
@@ -374,7 +374,7 @@ steinertree2 <- function(labelcheck=TRUE , coloring=FALSE, ter_list= NULL, glist
 	  }
 	 if(!is.null(ter_list)) 
 	  {
-		 V(g)$color="yellow"
+		 igraph::V(g)$color="yellow"
 		 V(g)[ter_list]$color="red"
 	  }
 	 #--------------
@@ -382,31 +382,31 @@ steinertree2 <- function(labelcheck=TRUE , coloring=FALSE, ter_list= NULL, glist
 	 #and work with the numerical index value of vertices instead
  	 #-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
  	 if(labelcheck){
- 	   labels=c(V(g)$label) #list of vertices
- 	   names= c(V(g)$name)
+ 	   labels=c(igraph::V(g)$label) #list of vertices
+ 	   names= c(igraph::V(g)$name)
  	   
  	   if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
  	     r0 =1:(length(V(g)))
- 	     V(g)$label=sapply (r0 ,function(r0) toString(r0) )
- 	     labels=  V(g)$label
+ 	     igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+ 	     labels=  igraph::V(g)$label
  	   }
  	   
  	   if(is.null(labels) && !is.null(names)){
- 	     V(g)$label = V(g)$name
+ 	     igraph::V(g)$label = igraph::V(g)$name
  	     labels=names
  	   }
  	   
  	   if(!is.null(labels) && is.null(names)){
- 	     V(g)$name =  V(g)$label
+ 	     igraph::V(g)$name =  igraph::V(g)$label
  	     names=labels
  	   }
  	   
  	   len=length(labels)
  	   r0 =1:(len)
  	   t =sapply (r0 ,function(r0) toString(labels[r0]) )
- 	   temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
- 	   V(g)$label=r0
- 	   V(g)$name=r0
+ 	   temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+ 	   igraph::V(g)$label=r0
+ 	   igraph::V(g)$name=r0
  	 }
  	 #--------------------------------
 	 terminals = V(g)[color=="red"]
@@ -477,7 +477,7 @@ steinertree2 <- function(labelcheck=TRUE , coloring=FALSE, ter_list= NULL, glist
 	#-----------------
 	 if(coloring)
 	 {
-		V(g)$color="yellow"
+		igraph::V(g)$color="yellow"
 		V(g)[subtree]$color="green"
 		V(g)[terminals]$color="red"
 	 }
@@ -485,8 +485,8 @@ steinertree2 <- function(labelcheck=TRUE , coloring=FALSE, ter_list= NULL, glist
 	 #-----------------
 	 #to recover the real label:
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		r0 =1:(length(V(steinert)))
 		labellist =sapply (r0 ,function(r0) temp[ as.integer(V(steinert)$label[r0])] )
@@ -570,7 +570,7 @@ steinertree3 <- function(labelcheck=TRUE,coloring=TRUE,ter_list=NULL,glist)
 	#####################################
           if(!is.null(ter_list)) 
 	  {
-		V(g)$color="yellow"
+		igraph::V(g)$color="yellow"
 		V(g)[ter_list]$color="red"
 	  }
 
@@ -578,31 +578,31 @@ steinertree3 <- function(labelcheck=TRUE,coloring=TRUE,ter_list=NULL,glist)
 	#-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	 #-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	 if(labelcheck){
-	   labels=c(V(g)$label) #list of vertices
-	   names= c(V(g)$name)
+	   labels=c(igraph::V(g)$label) #list of vertices
+	   names= c(igraph::V(g)$name)
 	   
 	   if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
 	     r0 =1:(length(V(g)))
-	     V(g)$label=sapply (r0 ,function(r0) toString(r0) )
-	     labels=  V(g)$label
+	     igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+	     labels=  igraph::V(g)$label
 	   }
 	   
 	   if(is.null(labels) && !is.null(names)){
-	     V(g)$label = V(g)$name
+	     igraph::V(g)$label = igraph::V(g)$name
 	     labels=names
 	   }
 	   
 	   if(!is.null(labels) && is.null(names)){
-	     V(g)$name =  V(g)$label
+	     igraph::V(g)$name =  igraph::V(g)$label
 	     names=labels
 	   }
 	   
 	   len=length(labels)
 	   r0 =1:(len)
 	   t =sapply (r0 ,function(r0) toString(labels[r0]) )
-	   temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
-	   V(g)$label=r0
-	   V(g)$name=r0
+	   temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+	   igraph::V(g)$label=r0
+	   igraph::V(g)$name=r0
 	 }
 	 #--------------------------------
  	 terminals = V(g)[color=="red"]
@@ -712,15 +712,15 @@ steinertree3 <- function(labelcheck=TRUE,coloring=TRUE,ter_list=NULL,glist)
 	#----------------coloring
 	 if(coloring)
 	 {
-		V(g)$color="yellow"
+		igraph::V(g)$color="yellow"
 		#V(g)[subtrees[[subtreenum]]]$color="green"
 		V(g)[subtrees[[1]]]$color="green"
 		V(g)[unlist(terminals)]$color="red"
 	 }
 	#-----------------to recover the real label:
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		r0 =1:(length(V(steinert)))
 		labellist =sapply (r0 ,function(r0) temp[ as.integer(V(steinert)$label[r0])] )
@@ -757,36 +757,36 @@ steinertree8 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,ReturnAll
  }
  if(!is.null(ter_list)) 
   {
-	V(g)$color="yellow"
+	igraph::V(g)$color="yellow"
 	V(g)[ter_list]$color="red"
   }
  #-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
  if(labelcheck){
-   labels=c(V(g)$label) #list of vertices
-   names= c(V(g)$name)
+   labels=c(igraph::V(g)$label) #list of vertices
+   names= c(igraph::V(g)$name)
    
    if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
      r0 =1:(length(V(g)))
-     V(g)$label=sapply (r0 ,function(r0) toString(r0) )
-     labels=  V(g)$label
+     igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+     labels=  igraph::V(g)$label
    }
    
    if(is.null(labels) && !is.null(names)){
-     V(g)$label = V(g)$name
+     igraph::V(g)$label = igraph::V(g)$name
      labels=names
    }
    
    if(!is.null(labels) && is.null(names)){
-     V(g)$name =  V(g)$label
+     igraph::V(g)$name =  igraph::V(g)$label
      names=labels
    }
    
    len=length(labels)
    r0 =1:(len)
    t =sapply (r0 ,function(r0) toString(labels[r0]) )
-   temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
-   V(g)$label=r0
-   V(g)$name=r0
+   temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+   igraph::V(g)$label=r0
+   igraph::V(g)$name=r0
  }
  #--------------------------------
  terminals = V(g)[color=="red"]
@@ -866,16 +866,16 @@ steinertree8 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,ReturnAll
 	 if(coloring)
 	 {
 		 #this line on real test code should not be included or changed because the graph labels also will not be like here and should be corrected like the pattern in steiner 6  (also the graph will not be needed to treturned and the steiner is enough)
-		 V(g)$color="yellow"
-		 V(g)$color[subtree] ="green"
-		 V(g)$color[terminals]="red"
+		 igraph::V(g)$color="yellow"
+		 igraph::V(g)$color[subtree] ="green"
+		 igraph::V(g)$color[terminals]="red"
 	 }
 	 #---------------------
 	 #-----------------
 	 #to recover the real label:
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		r0 =1:(length(V(steinert)))
 		labellist =sapply (r0 ,function(r0) temp[ as.integer(V(steinert)$label[r0])] )
@@ -987,16 +987,16 @@ steinertree8 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,ReturnAll
 	 if(coloring)
 	 {
 		 #this line on real test code should not be included or changed because the graph labels also will not be like here and should be corrected like the pattern in steiner 6  (also the graph will not be needed to treturned and the steiner is enough)
-		 V(g)$color="yellow"
-		 V(g)$color[subtree] ="green"
-		 V(g)$color[terminals]="red"
+		 igraph::V(g)$color="yellow"
+		 igraph::V(g)$color[subtree] ="green"
+		 igraph::V(g)$color[terminals]="red"
 	 }
 	 #---------------------
 	 #-----------------
 	 #to recover the real label:
 	 if(labelcheck){
-		V(g)$label=temp
-		V(g)$name= temp
+		igraph::V(g)$label=temp
+		igraph::V(g)$name= temp
 		labellist=c()
 		for(i in 1:length(t2)){
 	 		steinert= steinert_list[[i]]
@@ -1077,44 +1077,44 @@ steinerexact <- function(labelcheck = FALSE , coloring=FALSE, ter_list= NULL, Re
 	if (coloring){printinfo=TRUE}
 	if (!is.connected(graph) ){ print("Error : the graph is disconnected Steiner tree does not exist.") }
 	g=graph
-	if (!is.null(V(g)$name) ) { t=V(g)$name}
+	if (!is.null(igraph::V(g)$name) ) { t=igraph::V(g)$name}
 
 	if (class(ter_list)== "numeric" ){ter_list= as.character(ter_list)}
 	
 	if(!is.null(ter_list)) 
 	{
-	  V(g)$color="yellow"
+	  igraph::V(g)$color="yellow"
 	  V(g)[ter_list]$color="red"
 	}
 	#-----------------------------label checking in the begining and end to make sure the graph is correctly labeled and if not label them in here
 	if(labelcheck){
-	  labels=c(V(g)$label) #list of vertices
-	  names= c(V(g)$name)
+	  labels=c(igraph::V(g)$label) #list of vertices
+	  names= c(igraph::V(g)$name)
 	  
 	  if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
 	    r0 =1:(length(V(g)))
-	    V(g)$label=sapply (r0 ,function(r0) toString(r0) )
-	    labels=  V(g)$label
+	    igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
+	    labels=  igraph::V(g)$label
 	  }
 	  
 	  if(is.null(labels) && !is.null(names)){
-	    V(g)$label = V(g)$name
+	    igraph::V(g)$label = igraph::V(g)$name
 	    labels=names
 	  }
 	  
 	  if(!is.null(labels) && is.null(names)){
-	    V(g)$name =  V(g)$label
+	    igraph::V(g)$name =  igraph::V(g)$label
 	    names=labels
 	  }
-	  temp= V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
-	  V(g)$label=r0
-	  V(g)$name=r0
+	  temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+	  igraph::V(g)$label=r0
+	  igraph::V(g)$name=r0
 	  len=length(labels)
 	  r0 =1:(len)
 	  t =sapply (r0 ,function(r0) toString(r0) )
 	}
 	#--------------------------------
-	terminals= V(g)$name[V(g)$color=="red"]
+	terminals= igraph::V(g)$name[igraph::V(g)$color=="red"]
 	len=length(V(g))
 	#introducing an lower limit and higher limit of the exact solution
 	lim=length(V(g))-length(terminals)
@@ -1203,15 +1203,15 @@ steinerexact <- function(labelcheck = FALSE , coloring=FALSE, ter_list= NULL, Re
 			 if(coloring)
 			 {
 				 #this line on real test code should not be included or changed because the graph labels also will not be like here and should be corrected like the pattern in steiner 6  (also the graph will not be needed to treturned and the steiner is enough)
-				 V(g)$color="yellow"
+				 igraph::V(g)$color="yellow"
 				 V(g)[V(steinert)$label]$color ="green"
 				 V(g)[terminals]$color="red"
 			 }
 			 #----------------------label check
 			 if(labelcheck){
 					 #to recover the real label:
-					 V(g)$label=temp
-					 V(g)$name =temp
+					 igraph::V(g)$label=temp
+					 igraph::V(g)$name =temp
 					 labellist=c()
 					 for (num in 1:length(V(steinert)$label))
 					 {

@@ -10,7 +10,8 @@
 \title{steiner_comparison_plots}
 \description{This function plots the comparison results of Steiner tree algorithms excutions on simulated data.}
 \usage{
-steiner_comparison_plots (test_name, test_folder =NULL, outputname = NULL, listofterminaltest = NULL ,repetition= NULL)
+steiner_comparison_plots (test_name, test_folder = NULL, outputname = NULL,
+listofterminaltest = NULL ,repetition = NULL)
 }
 
 \arguments{

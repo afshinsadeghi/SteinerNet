@@ -12,7 +12,7 @@
 \title{steinertree}
 \description{A function which involves a set of steiner tree algorithms on networks. This set involves an exact algorithm and five heuristic algorithms.}
 \usage{
-steinertree(type, ter_list = NULL, graph, enumerate = FALSE, coloring = FALSE)
+steinertree(type, ter_list = NULL, graph, enumerate = FALSE, coloring = TRUE)
 }
 
 \arguments{
@@ -57,14 +57,16 @@ When \code{coloring} is TRUE returns a list that consists of two objects. The fi
 
 
 \references{
+	 
+
 	1. Path heuristic and Original path heuristic ,Section 4.1.3 of the book "The Steiner tree Problem", Petter,L,Hammer
 	
 	2. "An approximate solution for the Steiner problem in graphs" , H Takahashi, A Matsuyama
 	
 	3. F K. Hwang, D S. Richards and P Winter,"The steiner tree Problem", Kruskal-Based Heuristic Section 4.1.4,ISBN: 978-0-444-89098-6
 
-	4. Please refer to the paper that is pulished with this package. 
-
+  4. Afshin Sadeghi and Holger Froehlich, "Steiner tree methods for optimal sub-network identification: an empirical study", BMC Bioinformatics 2013 14:144 
+	
 	5. F K. Hwang, D S. Richards and P Winter,"The steiner tree Problem", Kruskal-Based Heuristic Section 4.1.4,
 The Optimal solution for stiner trees on networks,ISBN: 978-0-444-89098-6.
 }
@@ -82,14 +84,14 @@ The Optimal solution for stiner trees on networks,ISBN: 978-0-444-89098-6.
 
  #example 2
 
- g2 <- graph( c(0,2,1,2,2,3,3,4,5,6,3,6,2,7,2,5,2,6,5,8), directed=FALSE)
- V(g2)$color="yellow"
- V(g2)$color[c(1,4)]="red"		
- OP=steinertree("SP", NULL, g2, FALSE, TRUE)
+el <- matrix( c("a", "b", "a", "c", "b", "d","d","e", "c", "b" ), nc = 2, byrow = TRUE)
+g1 =graph_from_edgelist(el)
+ter_list= c("a","b","e")
+SP=steinertree("SP", ter_list, g1, TRUE, FALSE)
 
  #example 3: A case study with a sample graph and a given gene list
 
- g <- graph( c(0,2,1,2,2,3,3,4,5,6,3,6,2,7,2,5,2,6,5,8), directed=FALSE)
+ g <- graph( c(9,2,1,2,2,3,3,4,5,6,3,6,2,7,2,5,2,6,5,8), directed=FALSE)
  V(g)$name= c("1058", "51203", "6515", "83879", "160897", "10531", "8659", "2947", "643008")
  geneid_list= c("1058","83879", "160897","643")
  #we include into the test those geneIDes who exist within the base graph.
