@@ -49,10 +49,19 @@ When \code{test} is appr the function returns random sets of terminals.
 \author{Afshin Sadeghi}
 
 \examples{
- library(SteinerNet)
- g <- graph.ring(10)
- #generate_st_samples("exact", g, "testfolder", c(2,3), c(.8,.8))
+       library(igraph)
+       library(SteinerNet)
+       g <- igraph::graph.ring(10)
+       \dontshow{
+                library(igraph)
+                library(SteinerNet)
+                g <- igraph::graph.ring(10)
+       }
+       \donttest{
+      generate_st_samples("exact", g, "testfolder", c(2,3), c(.8,.8))
+       }
 }
+
 \keyword{graphs, protein interaction, network, pathway data graph, steiner tree}
 
 

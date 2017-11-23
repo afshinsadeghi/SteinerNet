@@ -208,8 +208,9 @@ appr_steiner = function(runtime=5, labelcheck=TRUE, coloring= TRUE,  ter_list=NU
 
 #with coloring=1 it reutuns also the original graph with colored stiner tree nodes
 #g is a graph
-steinertree1 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,glist)
+steinertree1 <- function(labelcheck = TRUE, coloring = TRUE, ter_list = NULL, glist)
 {
+   name <- NULL
  	 color=c()	
 	 graph= glist[[1]]
 	 if (!is.null(graph))
@@ -241,13 +242,13 @@ steinertree1 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,glist)
 
 		if(!is.null(labels) && is.null(names)){
 		  igraph::V(g)$name =  igraph::V(g)$label
-			names=labels
+			names = labels
 		}
 
-		len=length(labels)
+		len = length(labels)
 		r0 =1:(len)
-		t =sapply (r0 ,function(r0) toString(labels[r0]) )
-		temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+		t = sapply (r0 ,function(r0) toString(labels[r0]) )
+		temp = igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
 		igraph::V(g)$label=r0
 		igraph::V(g)$name=r0
 	 }
@@ -285,10 +286,10 @@ steinertree1 <- function(labelcheck= TRUE,coloring= TRUE,ter_list=NULL,glist)
 		 t=length(unlist(paths[t2[1]]))
 		 t3=unlist(paths[t2[1]])[t][[1]]
 		 #cat("adding new path to steiner tree: ",t3,"\n")
-		 subtree=union(subtree,V(g)[name==t3])
+		 subtree=union(subtree,	igraph::V(g)[name==t3])
 
 		 #						print(subtree)
-		 nsubtree= setdiff(nsubtree,V(g)[name==t3])
+		 nsubtree= setdiff(nsubtree, igraph::V(g)[name==t3])
 	 }
 	 #for sake of clearness above subtree only includes terminals so:
 	 subtree=union(subtree,V(g)[unique(unlist(edges)) ] )
@@ -1092,7 +1093,7 @@ steinerexact <- function(labelcheck = FALSE , coloring=FALSE, ter_list= NULL, Re
 	  names= c(igraph::V(g)$name)
 	  
 	  if(is.null(labels) && is.null(names))   {    #if graph has not labels make labels for it
-	    r0 =1:(length(V(g)))
+	    r0 =1:(length(igraph::V(g)))
 	    igraph::V(g)$label=sapply (r0 ,function(r0) toString(r0) )
 	    labels=  igraph::V(g)$label
 	  }
@@ -1107,6 +1108,7 @@ steinerexact <- function(labelcheck = FALSE , coloring=FALSE, ter_list= NULL, Re
 	    names=labels
 	  }
 	  temp= igraph::V(g)$name  #subgraph function was crashing if labels were alphabetic ,so here we keep a copy of them and work with the index of vertices instead
+	  r0 =1:(length(igraph::V(g)))
 	  igraph::V(g)$label=r0
 	  igraph::V(g)$name=r0
 	  len=length(labels)

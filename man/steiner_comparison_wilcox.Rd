@@ -72,12 +72,22 @@ The function stores a resulted plot in a PDF file.
 \author{Afshin Sadeghi}
 
 \examples{
- library(SteinerNet)
- g <- graph.ring(10)
- #generate_st_samples("exact", g, "testfolder", c(2,3), c(.8,.8))
- #steiner_simulation("exact", "testfolder", c(2,3), c(.8,.8))
- #steiner_comparison_wilcox ("exact", "testfolder", c(2,3), c(.8,.8))
+       library(igraph)
+       library(SteinerNet)
+       g <- igraph::graph.ring(10)
+       \dontshow{
+                library(igraph)
+                library(SteinerNet)
+                g <- igraph::graph.ring(10)
+       }
+       \donttest{
+       generate_st_samples("exact", g, "testfolder", c(2,3), c(.8,.8))
+       steiner_simulation("exact", "testfolder", c(2,3), c(.8,.8))
+       steiner_comparison_wilcox ("exact", "testfolder", c(2,3), c(.8,.8))
+       }
 }
+
+
 \keyword{graphs, protein interaction, network, graph, steiner tree}
 
 
