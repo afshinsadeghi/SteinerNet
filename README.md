@@ -22,7 +22,7 @@ To get the latest version of the package and install it from CRAN run the follow
 
 install.packages("SteinerNet")
 
-Version 3 and above is maintained here: https://github.com/krashkov/SteinerNet
+Version 3 and above is maintained here: [https://github.com/cran/SteinerNet](https://github.com/cran/SteinerNet)
 
 ### SteinerNet V2
 
