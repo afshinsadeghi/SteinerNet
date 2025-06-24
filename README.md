@@ -20,7 +20,9 @@ older versions of SteirNet up to (v1.3) work with igraph0.
 ### Versions > 3.0.0
 To get the latest version of the package and install it from CRAN run the following command:
 
+```
 install.packages("SteinerNet")
+```
 
 Version 3 and above is maintained here: [https://github.com/cran/SteinerNet](https://github.com/cran/SteinerNet)
 
@@ -30,14 +32,17 @@ To use this library, these libraries need to be included:
 ### RBGL http://www.bioconductor.org/packages/release/bioc/html/RBGL.html
 
 For that run: 
-
+```
 source("https://bioconductor.org/biocLite.R")
 
 biocLite("RBGL")
+```
 
 ### igraph  https://cran.r-project.org/web/packages/igraph/index.html
 
+```
 install.packages("igraph")
+```
 
 ##### igraph0 for versions upto 1.7 
 
@@ -46,22 +51,29 @@ Download and manually install the latest version from here https://cran.r-projec
 ### limma http://bioconductor.org/packages/release/bioc/html/limma.html
 
 For that run: 
-
+```
 source("https://bioconductor.org/biocLite.R")
 
 biocLite("limma")
-
+```
 ## Version History on Cran
+```
 https://cran.r-project.org/src/contrib/Archive/SteinerNet/
-
+```
 
 # Citation
-To use this code in your work, please cite the article related to this package:
+To use this package in your work, cite this article as:
 
-Steiner tree methods for optimal sub-network identification: an empirical study
-
-Afshin Sadeghi and Holger Fröhlich
-BMC Bioinformatics 2013 14:144
-https://doi.org/10.1186/1471-2105-14-144
-
+```
+@article{sadeghi2013steiner,
+  title={Steiner tree methods for optimal sub-network identification: an empirical study},
+  author={Sadeghi, Afshin and Fr{\"o}hlich, Holger},
+  journal={BMC bioinformatics},
+  volume={14},
+  pages={1--19},
+  year={2013},
+  publisher={Springer},
+  doi = {https://doi.org/10.1186/1471-2105-14-144}
+}
+```
 
